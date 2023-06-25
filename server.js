@@ -1,20 +1,22 @@
+// Dependencies
 const express = require('express')
 
+// Configuration
+require('dotenv').config();
+const PORT = process.env.PORT;
 const app = express();
 
-require('dotenv').config();
-
-const PORT = process.env.PORT;
-
-app.get('/', function(req, res) {
+//Routes
+app.get('/', (req, res) => {
     res.send('Welcome to an Awesome App about Bread!')
 })
 
 // Breads routes
 
-const breadController = require('./controllers/breads_controllers')
-app.use('/breads', breadController)
+const breadsController = require('./controllers/breads_controllers')
+app.use('/breads', breadsController)
 
-app.listen(PORT, function() {
+// Listen
+app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`)
 })
